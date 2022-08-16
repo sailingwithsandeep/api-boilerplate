@@ -6,8 +6,8 @@ const transporterOptions = {
   host: 'smtp.gmail.com',
   port: 587,
   auth: {
-    user: 'sandeep.parmar@yudiz.com', // SMTP email
-    pass: 'YudizSailing119' // Your password
+    user: 'xyz@gmial.com', // SMTP email
+    pass: '123' // Your password
   },
   secure: false
 };
