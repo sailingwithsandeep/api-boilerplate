@@ -2,10 +2,12 @@ const cors = require('cors');
 const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
-
 const { log } = require('./utils');
 const { default: helmet } = require('helmet');
 const morgan = require('morgan');
+const routers = [
+  require('./model-routes-services/user/auth/routes')
+];
 
 class App {
   constructor() {
@@ -30,9 +32,7 @@ class App {
     this.app.use(express.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(morgan('dev', { skip: (req) => req.path === '/ping' || req.path === '/favicon.ico' }));
-    this.app.use('/api', [
-      require('./model-routes-services/user/auth/routes')
-    ]);
+    this.app.use('/api', routers);
     this.app.use('*', this.routeHandler);
     this.app.use(this.logErrors);
     this.app.use(this.errorHandler);

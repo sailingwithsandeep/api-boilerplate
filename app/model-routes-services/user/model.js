@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema(
     sGender: {
       type: String,
       enum: ['Male', 'Female', 'Other']
+    },
+    isActive: {
+      type: Boolean,
+      default: true
     }
   },
   {
